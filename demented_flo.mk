@@ -1,5 +1,6 @@
 #
-# Copyright 2012 The Android Open Source Project
+# Copyright 2013 The Android Open-Source Project
+# Copyright (C) 2017 DEMENTED
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,30 +14,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
-
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-# Inherit from our custom product configuration 
-$(call inherit-product, vendor/demented/config/common_tablet.mk)
+# Inherit from the darkkat vendor common configuration
+$(call inherit-product, vendor/demented/config/common.mk)
 
 PRODUCT_NAME := demented_flo
 PRODUCT_DEVICE := flo
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := Nexus 7 2013
+PRODUCT_MODEL := Nexus 7 WIFI
 PRODUCT_MANUFACTURER := ASUS
-PRODUCT_RESTRICT_VENDOR_FILES := false
 
-# Kernel inline build
-TARGET_KERNEL_SOURCE := kernel/google/msm
-TARGET_KERNEL_CONFIG := flo_defconfig 
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+# Bootanimation
+PRODUCT_COPY_FILES += \
+  device/asus/flo/bootanimation/bootanimation.zip:system/media/bootanimation.zip
 
-# Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/asus/flo/device.mk)
 $(call inherit-product-if-exists, vendor/asus/flo/device-vendor.mk)
-#$(call inherit-product-if-exists, vendor/qcom/proprietary/common/config/device-vendor.mk)
+

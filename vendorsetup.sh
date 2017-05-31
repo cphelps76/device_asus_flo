@@ -14,4 +14,5 @@
 # limitations under the License.
 #
 
+add_lunch_combo aosp_flo-userdebug
 add_lunch_combo demented_flo-userdebug
