@@ -39,4 +39,7 @@ $(call inherit-product, device/asus/flo/device-common.mk)
 # inherit from the non-open-source side, if present
 $(call inherit-product-if-exists, vendor/asus/flo/device-vendor.mk)
 
+# Additional packages
+$(call inherit-product, device/asus/flo/packages.mk
+
 DEVICE_PACKAGE_OVERLAYS := device/asus/flo/overlay
